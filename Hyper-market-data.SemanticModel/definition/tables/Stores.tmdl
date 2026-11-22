@@ -1,0 +1,71 @@
+table Stores
+	lineageTag: 5e323075-e4fb-4d9f-a175-0eb74ff16633
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e392f21c-14c9-4832-8dbe-35d529e1245b
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b58a9458-a0c4-4203-80e0-f4c27a2ecf0d
+		summarizeBy: none
+		sourceColumn: region_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_type
+		dataType: string
+		lineageTag: 0b7b84bc-7671-44ae-8de8-baa9374a0aa6
+		summarizeBy: none
+		sourceColumn: store_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_city
+		dataType: string
+		lineageTag: f3bab1f6-9654-4bcf-aea2-528cd97922c6
+		summarizeBy: none
+		sourceColumn: store_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_state
+		dataType: string
+		lineageTag: 8177795c-a547-416f-b93a-b702d3658731
+		summarizeBy: none
+		sourceColumn: store_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_country
+		dataType: string
+		lineageTag: d83876d3-ccb9-4a2f-aaa3-bc6a1b609407
+		summarizeBy: none
+		sourceColumn: store_country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Stores = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data"),
+				    #"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Stores csv" = Source{[#"Folder Path"="C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\",Name="Stores.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Stores csv",[Delimiter=",", Columns=13, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"store_id", Int64.Type}, {"region_id", Int64.Type}, {"store_type", type text}, {"store_name", type text}, {"store_street_address", type text}, {"store_city", type text}, {"store_state", type text}, {"store_country", type text}, {"store_phone", type text}, {"first_opened_date", type date}, {"last_remodel_date", type date}, {"total_sqft", Int64.Type}, {"grocery_sqft", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each true),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"store_name", "store_street_address", "store_phone", "last_remodel_date", "total_sqft", "grocery_sqft", "first_opened_date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

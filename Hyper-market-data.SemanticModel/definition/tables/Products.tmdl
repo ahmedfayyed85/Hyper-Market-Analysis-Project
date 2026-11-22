@@ -1,0 +1,79 @@
+table Products
+	lineageTag: e9102baa-3c51-4f46-a7e7-d0b3a9e0f1db
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e11b209-64cd-4046-ad89-37f401a92a7c
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_brand
+		dataType: string
+		lineageTag: eec17955-69d4-4204-8447-e8a35a17e710
+		summarizeBy: none
+		sourceColumn: product_brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: c3f91831-8b2a-4407-a1d9-fd232ce31991
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_retail_price
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 9d69c744-bef8-424e-a8dc-a2cfac40df9b
+		summarizeBy: sum
+		sourceColumn: product_retail_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column product_cost
+		dataType: double
+		lineageTag: 9f6254b1-28a7-4dbc-818b-a5a4e49704a5
+		summarizeBy: sum
+		sourceColumn: product_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column product_weight
+		dataType: double
+		lineageTag: 25bf85a9-bb0d-4dee-b1be-8e0a9dcccaa5
+		summarizeBy: sum
+		sourceColumn: product_weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data"),
+				    #"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Products csv" = Source{[#"Folder Path"="C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\",Name="Products.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Products csv",[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", Int64.Type}, {"product_brand", type text}, {"product_name", type text}, {"product_sku", Int64.Type}, {"product_retail_price", type number}, {"product_cost", type number}, {"product_weight", type number}, {"recyclable", Int64.Type}, {"low_fat", Int64.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"recyclable", "low_fat"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Columns","washingtoon","Washingtoon",Replacer.ReplaceText,{"product_brand"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Blue Labell","Blue Label",Replacer.ReplaceText,{"product_brand"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Replaced Value1",{"product_sku"})
+				in
+				    #"Removed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,78 @@
+table SALES
+	lineageTag: ad458361-a53f-4478-b6ba-37bd293a6eb5
+
+	column transaction_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4ebb31a9-69b5-440f-a322-78e02080ab01
+		summarizeBy: none
+		sourceColumn: transaction_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column stock_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 88be1b50-ae83-4c70-8eb7-0ae19a31e30c
+		summarizeBy: none
+		sourceColumn: stock_date
+
+		variation Variation
+			isDefault
+			relationship: f24c5386-f595-4271-882f-5575fc83f768
+			defaultHierarchy: LocalDateTable_c279f6c4-67dd-4b29-bbf7-606ce2b3fe13.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 23b9af42-652f-462c-abc1-8c4d0207cb8c
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d7934cb6-d606-4b56-846b-491073256459
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: c1dc1cd5-73da-4f8e-9c6a-d7e7518fd84e
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 417e185d-3bed-4180-8b9c-925c11ae5b71
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SALES = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({#"Sales 2018", #"Sales 2017"})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

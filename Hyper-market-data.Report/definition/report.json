@@ -1,0 +1,669 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "Fluent2-CY26SU08",
+      "reportVersionAtImport": {
+        "visual": "2.12.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "Fluent2-CY26SU08",
+          "path": "BaseThemes/Fluent2-CY26SU08.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "2Plus4765325639742666.png",
+          "path": "2Plus4765325639742666.png",
+          "type": "Image"
+        },
+        {
+          "name": "Bar_Chart6608820988752231.png",
+          "path": "Bar_Chart6608820988752231.png",
+          "type": "Image"
+        },
+        {
+          "name": "Basket_Minus1916086033580744.png",
+          "path": "Basket_Minus1916086033580744.png",
+          "type": "Image"
+        },
+        {
+          "name": "Basket_Minus6166723480295347.png",
+          "path": "Basket_Minus6166723480295347.png",
+          "type": "Image"
+        },
+        {
+          "name": "Basket_Minus6709721153544632.png",
+          "path": "Basket_Minus6709721153544632.png",
+          "type": "Image"
+        },
+        {
+          "name": "Basket04789375498987869.png",
+          "path": "Basket04789375498987869.png",
+          "type": "Image"
+        },
+        {
+          "name": "Basket778303811418569.png",
+          "path": "Basket778303811418569.png",
+          "type": "Image"
+        },
+        {
+          "name": "Basket8731157315384239.png",
+          "path": "Basket8731157315384239.png",
+          "type": "Image"
+        },
+        {
+          "name": "Box8115887637009292.png",
+          "path": "Box8115887637009292.png",
+          "type": "Image"
+        },
+        {
+          "name": "Calendar489727851206917.png",
+          "path": "Calendar489727851206917.png",
+          "type": "Image"
+        },
+        {
+          "name": "Calendar5345960384663049.png",
+          "path": "Calendar5345960384663049.png",
+          "type": "Image"
+        },
+        {
+          "name": "Calendar8245851165406832.png",
+          "path": "Calendar8245851165406832.png",
+          "type": "Image"
+        },
+        {
+          "name": "Calendar9437437585103648.png",
+          "path": "Calendar9437437585103648.png",
+          "type": "Image"
+        },
+        {
+          "name": "Cart13382432415565415.png",
+          "path": "Cart13382432415565415.png",
+          "type": "Image"
+        },
+        {
+          "name": "Cart5414350670991909.png",
+          "path": "Cart5414350670991909.png",
+          "type": "Image"
+        },
+        {
+          "name": "Cart7833430823583794.png",
+          "path": "Cart7833430823583794.png",
+          "type": "Image"
+        },
+        {
+          "name": "Cash10443495408053127.png",
+          "path": "Cash10443495408053127.png",
+          "type": "Image"
+        },
+        {
+          "name": "Cash23036305810954116.png",
+          "path": "Cash23036305810954116.png",
+          "type": "Image"
+        },
+        {
+          "name": "Cash3874388094688953.png",
+          "path": "Cash3874388094688953.png",
+          "type": "Image"
+        },
+        {
+          "name": "Cash4555844043104379.png",
+          "path": "Cash4555844043104379.png",
+          "type": "Image"
+        },
+        {
+          "name": "Chevron_Down4419443441545271.png",
+          "path": "Chevron_Down4419443441545271.png",
+          "type": "Image"
+        },
+        {
+          "name": "Customize_Alt42827031871796706.png",
+          "path": "Customize_Alt42827031871796706.png",
+          "type": "Image"
+        },
+        {
+          "name": "Customize_Alt5234037305853189.png",
+          "path": "Customize_Alt5234037305853189.png",
+          "type": "Image"
+        },
+        {
+          "name": "Customize_Alt6330273339630704.png",
+          "path": "Customize_Alt6330273339630704.png",
+          "type": "Image"
+        },
+        {
+          "name": "Customize_Alt6997913363790342.png",
+          "path": "Customize_Alt6997913363790342.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dollar0008054147665926825.png",
+          "path": "Dollar0008054147665926825.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dollar1317152828357977.png",
+          "path": "Dollar1317152828357977.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dollar35120277862645355.png",
+          "path": "Dollar35120277862645355.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dollar4199575994679453.png",
+          "path": "Dollar4199575994679453.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dollar5248842330245939.png",
+          "path": "Dollar5248842330245939.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dollar7473713837463272.png",
+          "path": "Dollar7473713837463272.png",
+          "type": "Image"
+        },
+        {
+          "name": "Dollar8235575319400646.png",
+          "path": "Dollar8235575319400646.png",
+          "type": "Image"
+        },
+        {
+          "name": "Download0521296243719922.png",
+          "path": "Download0521296243719922.png",
+          "type": "Image"
+        },
+        {
+          "name": "Download6279616776237205.png",
+          "path": "Download6279616776237205.png",
+          "type": "Image"
+        },
+        {
+          "name": "Download6464412899787029.png",
+          "path": "Download6464412899787029.png",
+          "type": "Image"
+        },
+        {
+          "name": "Download6915925884612355.png",
+          "path": "Download6915925884612355.png",
+          "type": "Image"
+        },
+        {
+          "name": "Gear4269021106165273.png",
+          "path": "Gear4269021106165273.png",
+          "type": "Image"
+        },
+        {
+          "name": "Gear5848194150410743.png",
+          "path": "Gear5848194150410743.png",
+          "type": "Image"
+        },
+        {
+          "name": "Gear9054387357166387.png",
+          "path": "Gear9054387357166387.png",
+          "type": "Image"
+        },
+        {
+          "name": "Grid_Alt5336799209831242.png",
+          "path": "Grid_Alt5336799209831242.png",
+          "type": "Image"
+        },
+        {
+          "name": "Grid_Alt6466008406070037.png",
+          "path": "Grid_Alt6466008406070037.png",
+          "type": "Image"
+        },
+        {
+          "name": "Grid_Alt7200386147360301.png",
+          "path": "Grid_Alt7200386147360301.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_12211058513128898027955.png",
+          "path": "Group_12211058513128898027955.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_1221114605419891413218.png",
+          "path": "Group_1221114605419891413218.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_1221124797974410945423.png",
+          "path": "Group_1221124797974410945423.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_122112566005062105503.png",
+          "path": "Group_122112566005062105503.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_1221134145748886329963.png",
+          "path": "Group_1221134145748886329963.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_122113660978148788627.png",
+          "path": "Group_122113660978148788627.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_1221142127734379124326.png",
+          "path": "Group_1221142127734379124326.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_12211507034759917047.png",
+          "path": "Group_12211507034759917047.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_122115198333538457496.png",
+          "path": "Group_122115198333538457496.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_122115624915079704484.png",
+          "path": "Group_122115624915079704484.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_122116269720838091636.png",
+          "path": "Group_122116269720838091636.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_12341112280488128.png",
+          "path": "Group_12341112280488128.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_13547311987966496.png",
+          "path": "Group_13547311987966496.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_17914695347975303.png",
+          "path": "Group_17914695347975303.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_18632634071672919.png",
+          "path": "Group_18632634071672919.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211110006973382217319024.png",
+          "path": "Group_211110006973382217319024.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_21111019063288778946808.png",
+          "path": "Group_21111019063288778946808.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211110194601286063818.png",
+          "path": "Group_211110194601286063818.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111106472120749450583.png",
+          "path": "Group_2111106472120749450583.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111107670752919604995.png",
+          "path": "Group_2111107670752919604995.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111113576392160300277.png",
+          "path": "Group_2111113576392160300277.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111116240076629976474.png",
+          "path": "Group_2111116240076629976474.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111117603580027804555.png",
+          "path": "Group_2111117603580027804555.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211112323964297991128.png",
+          "path": "Group_211112323964297991128.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211112403550113335784.png",
+          "path": "Group_211112403550113335784.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111124336852264580566.png",
+          "path": "Group_2111124336852264580566.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211112671273705440056.png",
+          "path": "Group_211112671273705440056.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211113274031103657705.png",
+          "path": "Group_211113274031103657705.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111134957396202989255.png",
+          "path": "Group_2111134957396202989255.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211113826554721551272.png",
+          "path": "Group_211113826554721551272.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211113907395361280547.png",
+          "path": "Group_211113907395361280547.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211113931581766428457.png",
+          "path": "Group_211113931581766428457.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211114343668473747401.png",
+          "path": "Group_211114343668473747401.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211115364218009020807.png",
+          "path": "Group_211115364218009020807.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211115875954032664192.png",
+          "path": "Group_211115875954032664192.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211117624962022706642.png",
+          "path": "Group_211117624962022706642.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211118205508250992599.png",
+          "path": "Group_211118205508250992599.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211118223670188158052.png",
+          "path": "Group_211118223670188158052.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_2111183913841848746.png",
+          "path": "Group_2111183913841848746.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211118593756421360194.png",
+          "path": "Group_211118593756421360194.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211119439988547444996.png",
+          "path": "Group_211119439988547444996.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_211119879121197629896.png",
+          "path": "Group_211119879121197629896.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_31118361849028685162.png",
+          "path": "Group_31118361849028685162.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_31119504694353325047.png",
+          "path": "Group_31119504694353325047.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_3113028419563858422.png",
+          "path": "Group_3113028419563858422.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_3118421172059870058.png",
+          "path": "Group_3118421172059870058.png",
+          "type": "Image"
+        },
+        {
+          "name": "History19275123250696102.png",
+          "path": "History19275123250696102.png",
+          "type": "Image"
+        },
+        {
+          "name": "History5233930474551616.png",
+          "path": "History5233930474551616.png",
+          "type": "Image"
+        },
+        {
+          "name": "History6153425854029075.png",
+          "path": "History6153425854029075.png",
+          "type": "Image"
+        },
+        {
+          "name": "History6993833619505609.png",
+          "path": "History6993833619505609.png",
+          "type": "Image"
+        },
+        {
+          "name": "Home213699777944686644.png",
+          "path": "Home213699777944686644.png",
+          "type": "Image"
+        },
+        {
+          "name": "Home227841777604253292.png",
+          "path": "Home227841777604253292.png",
+          "type": "Image"
+        },
+        {
+          "name": "Icon_Men3u25154368029274976.png",
+          "path": "Icon_Men3u25154368029274976.png",
+          "type": "Image"
+        },
+        {
+          "name": "Icon_Menu7925594659388194.png",
+          "path": "Icon_Menu7925594659388194.png",
+          "type": "Image"
+        },
+        {
+          "name": "Layer5810471844321075.png",
+          "path": "Layer5810471844321075.png",
+          "type": "Image"
+        },
+        {
+          "name": "Line_Chart_Up09050019856682723.png",
+          "path": "Line_Chart_Up09050019856682723.png",
+          "type": "Image"
+        },
+        {
+          "name": "Line_Chart_Up16106333758234348.png",
+          "path": "Line_Chart_Up16106333758234348.png",
+          "type": "Image"
+        },
+        {
+          "name": "Line_Chart_Up41398793114212595.png",
+          "path": "Line_Chart_Up41398793114212595.png",
+          "type": "Image"
+        },
+        {
+          "name": "Line_Chart_Up8754119877779286.png",
+          "path": "Line_Chart_Up8754119877779286.png",
+          "type": "Image"
+        },
+        {
+          "name": "Location5869199117825651.png",
+          "path": "Location5869199117825651.png",
+          "type": "Image"
+        },
+        {
+          "name": "photo26316657535746416.png",
+          "path": "photo26316657535746416.png",
+          "type": "Image"
+        },
+        {
+          "name": "Refresh24328654876009403.png",
+          "path": "Refresh24328654876009403.png",
+          "type": "Image"
+        },
+        {
+          "name": "Refresh37247059443471897.png",
+          "path": "Refresh37247059443471897.png",
+          "type": "Image"
+        },
+        {
+          "name": "Refresh5651139800104664.png",
+          "path": "Refresh5651139800104664.png",
+          "type": "Image"
+        },
+        {
+          "name": "Refresh6103313777469064.png",
+          "path": "Refresh6103313777469064.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rotate_Left6960523350406981.png",
+          "path": "Rotate_Left6960523350406981.png",
+          "type": "Image"
+        },
+        {
+          "name": "Shoping_Bag_Alt1583084612049216.png",
+          "path": "Shoping_Bag_Alt1583084612049216.png",
+          "type": "Image"
+        },
+        {
+          "name": "Shoping_Bag_Alt39639354201277976.png",
+          "path": "Shoping_Bag_Alt39639354201277976.png",
+          "type": "Image"
+        },
+        {
+          "name": "Shoping_Bag_Alt8932528298632043.png",
+          "path": "Shoping_Bag_Alt8932528298632043.png",
+          "type": "Image"
+        },
+        {
+          "name": "Shoping_Bag_Alt9041822005459743.png",
+          "path": "Shoping_Bag_Alt9041822005459743.png",
+          "type": "Image"
+        },
+        {
+          "name": "Store1724920493127634.png",
+          "path": "Store1724920493127634.png",
+          "type": "Image"
+        },
+        {
+          "name": "Store5208637103519552.png",
+          "path": "Store5208637103519552.png",
+          "type": "Image"
+        },
+        {
+          "name": "Store5264312307934338.png",
+          "path": "Store5264312307934338.png",
+          "type": "Image"
+        },
+        {
+          "name": "Store7232530306326654.png",
+          "path": "Store7232530306326654.png",
+          "type": "Image"
+        },
+        {
+          "name": "Trending_Up03379092836209718.png",
+          "path": "Trending_Up03379092836209718.png",
+          "type": "Image"
+        },
+        {
+          "name": "Trending_Up7329369179074807.png",
+          "path": "Trending_Up7329369179074807.png",
+          "type": "Image"
+        },
+        {
+          "name": "Trending_Up928180718252321.png",
+          "path": "Trending_Up928180718252321.png",
+          "type": "Image"
+        },
+        {
+          "name": "Trending_Up964838023918711.png",
+          "path": "Trending_Up964838023918711.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

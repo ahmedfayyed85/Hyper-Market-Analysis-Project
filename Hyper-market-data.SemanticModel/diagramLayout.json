@@ -1,0 +1,126 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 895.00078059565521,
+            "y": 7.98826990873124
+          },
+          "nodeIndex": "Customers",
+          "nodeLineageTag": "71c43f22-d1c6-476b-bc9e-fc1fd39a0ac9",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 669.00857012088909,
+            "y": 486.38575707712619
+          },
+          "nodeIndex": "Products",
+          "nodeLineageTag": "e9102baa-3c51-4f46-a7e7-d0b3a9e0f1db",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 546.03658988670691,
+            "y": 0
+          },
+          "nodeIndex": "Region",
+          "nodeLineageTag": "1cde67b1-c637-4ab1-96ac-c9d364933301",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 91,
+            "y": 542.929298308197
+          },
+          "nodeIndex": "Returns",
+          "nodeLineageTag": "ad830cd2-0c30-44fa-a7af-9a2d25c40480",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 389.94934463347755,
+            "y": 229.4796354678806
+          },
+          "nodeIndex": "SALES",
+          "nodeLineageTag": "ad458361-a53f-4478-b6ba-37bd293a6eb5",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 20.063383096426946,
+            "y": 0
+          },
+          "nodeIndex": "Stores",
+          "nodeLineageTag": "5e323075-e4fb-4d9f-a175-0eb74ff16633",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1114.7547468571595,
+            "y": 433.04391569293529
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "b5792a1c-71d2-4d0a-afaa-232a2bddef09",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1318.3543680925352,
+            "y": 135.01959558844166
+          },
+          "nodeIndex": "_Measure",
+          "nodeLineageTag": "63bd1fc6-2442-478b-8a6b-70bf4c2289c4",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70.95554390096882,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

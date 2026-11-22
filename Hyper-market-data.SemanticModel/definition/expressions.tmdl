@@ -1,0 +1,30 @@
+expression 'Sales 2017' =
+		let
+		    Source = Folder.Files("C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data"),
+		    #"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Sales 2017 csv" = Source{[#"Folder Path"="C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\",Name="Sales 2017.csv"]}[Content],
+		    #"Imported CSV" = Csv.Document(#"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Sales 2017 csv",[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"transaction_date", type date}, {"stock_date", type date}, {"product_id", Int64.Type}, {"customer_id", Int64.Type}, {"store_id", Int64.Type}, {"quantity", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: a59f3060-a869-4d27-8f54-9835690fae7b
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Sales 2018' =
+		let
+		    Source = Folder.Files("C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data"),
+		    #"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Sales 2018 csv" = Source{[#"Folder Path"="C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\",Name="Sales 2018.csv"]}[Content],
+		    #"Imported CSV" = Csv.Document(#"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Sales 2018 csv",[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"transaction_date", type date}, {"stock_date", type date}, {"product_id", Int64.Type}, {"customer_id", Int64.Type}, {"store_id", Int64.Type}, {"quantity", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 28e9a3cb-e797-4631-99e3-5bfd4d528835
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

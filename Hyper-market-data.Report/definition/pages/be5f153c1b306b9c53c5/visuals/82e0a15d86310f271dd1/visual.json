@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "82e0a15d86310f271dd1",
+  "position": {
+    "x": 55.171717171717148,
+    "y": 185.46717171717168,
+    "z": 2000,
+    "height": 26.25,
+    "width": 126.25,
+    "tabOrder": 25000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "vs previous month",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "color": "#999999"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "2304682492f93a4af12f"
+}

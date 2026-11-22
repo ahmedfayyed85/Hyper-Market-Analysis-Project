@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Hyper-market-data"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f4a9af0c-88c4-4283-a7b8-fc1708484dd6"
+  }
+}

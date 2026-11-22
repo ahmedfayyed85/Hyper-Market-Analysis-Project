@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "807466cb544b28fa1c53",
+  "displayName": "Executive Overview",
+  "displayOption": "ActualSize",
+  "height": 1400,
+  "width": 1500,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F0F2DF'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

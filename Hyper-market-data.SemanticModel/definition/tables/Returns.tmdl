@@ -1,0 +1,57 @@
+table Returns
+	lineageTag: ad830cd2-0c30-44fa-a7af-9a2d25c40480
+
+	column return_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9dac4bcf-0b27-467e-9be3-59a278a1bffb
+		summarizeBy: none
+		sourceColumn: return_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 59dde34d-328d-4148-af43-d6b182426f2c
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e633945-d893-474c-9b9b-4223a3adcf6e
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 8cb677e2-3436-492e-8227-4bf4a9e56a2e
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Returns = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data"),
+				    #"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Returns csv" = Source{[#"Folder Path"="C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\",Name="Returns.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Returns csv",[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"return_date", type date}, {"product_id", Int64.Type}, {"store_id", Int64.Type}, {"quantity", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

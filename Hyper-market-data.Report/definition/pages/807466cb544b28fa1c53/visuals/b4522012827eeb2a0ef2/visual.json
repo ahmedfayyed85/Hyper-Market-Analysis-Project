@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b4522012827eeb2a0ef2",
+  "position": {
+    "x": 789.16666666666674,
+    "y": 140,
+    "z": 51000,
+    "height": 99.166666666666686,
+    "width": 331.66666666666674,
+    "tabOrder": 47000
+  },
+  "visualGroup": {
+    "displayName": "calendar slicer",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

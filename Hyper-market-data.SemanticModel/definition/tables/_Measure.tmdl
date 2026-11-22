@@ -1,0 +1,770 @@
+table _Measure
+	lineageTag: 63bd1fc6-2442-478b-8a6b-70bf4c2289c4
+
+	measure 'Total sales' = ```
+			
+			SUMX( 
+			    SALES, 
+			    SALES[quantity] * RELATED(Products[product_retail_price])
+			    )
+			    
+			```
+		lineageTag: e0030ce3-8424-41fe-9ce6-fd626c3022de
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total cost' =
+			
+			SUMX(
+			    SALES,
+			    SALES[quantity] * RELATED(Products[product_cost] )
+			    )
+		lineageTag: 19c61413-d844-44ba-a5ab-4cd250165974
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total gross Profit' = [Total sales] - [Total cost]
+		lineageTag: b4c2139b-d235-44cf-9e20-5f673e1a4d8d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Margin %' =
+			
+			DIVIDE(
+			    [Total Gross Profit],
+			    [Total Sales],
+			    0
+			)
+		formatString: 0%;-0%;0%
+		lineageTag: dfce9096-e95b-4022-a284-3e411a6ab9d8
+
+	measure 'Total Quantity' =
+			
+			SUM(Sales[quantity])
+		formatString: 0
+		lineageTag: 9dc51e36-50e5-4aa5-91c1-3470a6319da9
+
+	measure 'Total Customers' =
+			
+			DISTINCTCOUNT(Sales[customer_id])
+		formatString: 0
+		lineageTag: bdf5ffa9-1b50-4fa3-909c-b56ae306c281
+
+	measure 'Total Returns' =
+			
+			SUM(Returns[quantity])
+		formatString: 0
+		lineageTag: 2cab622f-7812-4069-af21-b76567c3031d
+
+	measure 'Return Rate %' =
+			
+			DIVIDE(
+			    [Total Returns],
+			    [Total Quantity],
+			    0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e61870f3-01b6-4e98-b56f-132be4396247
+
+	measure 'Previous Month Sales' =
+			
+			CALCULATE(
+			    [Total sales],
+			    DATEADD(
+			        Calendar[date],
+			        -1,
+			        MONTH
+			    )
+			)
+		lineageTag: 1c6d7032-d592-40a2-9381-2595fd02a1d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales MoM %' =
+			
+			VAR CurrentSales = [Total sales]
+			VAR PreviousSales = [Previous Month Sales]
+			RETURN
+			IF(
+			    ISBLANK(PreviousSales),
+			    BLANK(),
+			    DIVIDE(
+			        CurrentSales - PreviousSales,
+			        PreviousSales
+			    )
+			)
+		lineageTag: ab9ea790-734a-4ed9-a8ef-b247216f5208
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Month Gross Profit' =
+			
+			CALCULATE(
+			    [Total gross Profit],
+			    DATEADD(
+			        Calendar[date],
+			        -1,
+			        MONTH
+			    )
+			)
+		lineageTag: 5f7cc92d-72aa-4ee8-9f0b-08b570160451
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Profit MoM %' =
+			
+			DIVIDE(
+			    [Total gross Profit] - [Previous Month Gross Profit],
+			    [Previous Month Gross Profit],
+			    0
+			)
+		lineageTag: 7c966314-d9f9-40c6-bc05-b226b69e7b0d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales MoM Display' =
+			
+			VAR Change = [Sales MoM %]
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Change > 0, "▲ ",
+			        Change < 0, "▼ ",
+			        "▬ "
+			    )
+			RETURN
+			    Arrow & FORMAT(ABS(Change), "0.00%")
+		lineageTag: 836c41a0-88da-4a55-a3ed-64cc98533568
+
+	measure 'Gross Profit MoM Display' =
+			
+			VAR Change = [Gross Profit MoM %]
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Change > 0, "▲ ",
+			        Change < 0, "▼ ",
+			        "▬ "
+			    )
+			RETURN
+			    Arrow & FORMAT(ABS(Change), "0.00%")
+		lineageTag: 1b265e2e-979a-4875-84ce-35d73e19627c
+
+	measure 'Sales MoM Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Sales MoM %] > 0, "#2E7D32",
+			    [Sales MoM %] < 0, "#C62828",
+			    "#808080"
+			)
+		lineageTag: f57b3f90-f5df-4161-8cc8-eef5095ea91c
+
+	measure 'Gross Profit MoM Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Gross Profit MoM %] > 0, "#2E7D32",
+			    [Gross Profit MoM %] < 0, "#C62828",
+			    "#808080"
+			)
+		lineageTag: 57b585cf-0b55-4c42-ac35-d54c9e80e8d7
+
+	measure 'Previous Month Quantity' =
+			
+			CALCULATE(
+			    [Total Quantity],
+			    DATEADD(
+			        Calendar[date],
+			        -1,
+			        MONTH
+			    )
+			)
+		formatString: 0
+		lineageTag: 7b8056d7-c168-456d-9d57-7959bfbe5349
+
+	measure 'Quantity MoM %' =
+			
+			DIVIDE(
+			    [Total Quantity] - [Previous Month Quantity],
+			    [Previous Month Quantity],
+			    0
+			)
+		lineageTag: 611de922-4702-4996-8f8d-b9f8ca8a223e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Quantity MoM Display' =
+			
+			VAR Change = [Quantity MoM %]
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Change > 0, "▲ ",
+			        Change < 0, "▼ ",
+			        "▬ "
+			    )
+			RETURN
+			    Arrow & FORMAT(ABS(Change), "0.00%")
+		lineageTag: 7eb24a70-9880-49e6-a6ce-33df39325ebb
+
+	measure 'Quantity MoM Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Quantity MoM %] > 0, "#2E7D32",
+			    [Quantity MoM %] < 0, "#C62828",
+			    "#808080"
+			)
+		lineageTag: e83bea01-e33b-40bb-a0e2-abe440cba465
+
+	measure 'Previous Month Gross Margin %' =
+			
+			CALCULATE(
+			    [Gross Margin %],
+			    DATEADD(
+			        Calendar[date],
+			        -1,
+			        MONTH
+			    )
+			)
+		lineageTag: 6634b0fe-e299-4696-9b7e-6ae9a0c7f964
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Margin MoM %' =
+			
+			[Gross Margin %] - [Previous Month Gross Margin %]
+		lineageTag: b93c19f3-e045-49c0-b001-6ad3285b35a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gross Margin MoM Display' =
+			
+			VAR Change =
+			    [Gross Margin %] - [Previous Month Gross Margin %]
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Change > 0, "▲ ",
+			        Change < 0, "▼ ",
+			        "▬ "
+			    )
+			RETURN
+			    Arrow & FORMAT(ABS(Change) * 100, "0.000") & " pp"
+		lineageTag: 0ea5e7fe-e2c5-46b2-b3d2-f15ba9878bdb
+
+	measure 'Previous Month Return Rate' =
+			
+			CALCULATE(
+			    [Return Rate %],
+			    DATEADD(
+			        Calendar[date],
+			        -1,
+			        MONTH
+			    )
+			)
+		lineageTag: d0fb7f4c-7174-4357-bd24-04bc1efa46ed
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Rate MoM' =
+			
+			[Return Rate %] - [Previous Month Return Rate]
+		lineageTag: 15ffbc21-af73-48f4-8432-73c6c9297228
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Rate MoM Display' =
+			
+			VAR Change =
+			    [Return Rate %] - [Previous Month Return Rate]
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Change > 0, "▲ ",
+			        Change < 0, "▼ ",
+			        "▬ "
+			    )
+			RETURN
+			    Arrow & FORMAT(ABS(Change) * 100, "0.000") & " pp"
+		lineageTag: 4f659c4f-1675-4fa8-a24d-596fab5bb714
+
+	measure 'Return Rate Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Return Rate %] < [Previous Month Return Rate], "#2E7D32",
+			    [Return Rate %] > [Previous Month Return Rate], "#C62828",
+			    "#808080"
+			)
+		lineageTag: 411f5d56-8192-45f0-9ee5-f9b7b4ebc85d
+
+	measure 'Gross Margin Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Gross Margin %] > [Previous Month Gross Margin %], "#2E7D32",
+			    [Gross Margin %] < [Previous Month Gross Margin %], "#C62828",
+			    "#808080"
+			)
+		lineageTag: c1c0157f-349c-451c-b7ec-83a962b08706
+
+	measure 'Average Sales per Customer' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    [Total Customers],
+			    0
+			)
+		formatString: 0.0
+		lineageTag: 1a1c8a58-1e3c-47e1-9c32-bc9da0cc5925
+
+	measure 'Sales Growth %' =
+			
+			VAR CurrentSales = [Total Sales]
+			VAR PreviousSales = [Previous Month Sales]
+			
+			RETURN
+			IF(
+			    NOT ISBLANK(PreviousSales),
+			    DIVIDE(
+			        CurrentSales - PreviousSales,
+			        PreviousSales
+			    )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: fc3c68a3-b9a9-4d98-bf1e-ea01911f54ce
+
+	measure 'Sales Growth Display' =
+			
+			VAR Growth = [Sales Growth %]
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Growth > 0, "▲",
+			        Growth < 0, "▼",
+			        "▬"
+			    )
+			
+			RETURN
+			IF(
+			    ISBLANK(Growth),
+			    "N/A",
+			    Arrow & " " & FORMAT(Growth, "0.00%")
+			)
+		lineageTag: 00082e9c-ce80-4862-a5f7-45ae6dbc0211
+
+	measure 'Sales Growth Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Sales Growth %] > 0, "#2E7D32",
+			    [Sales Growth %] < 0, "#E74C3C",
+			    "#808080"
+			)
+		lineageTag: d3859320-65b4-41ed-ba34-373ba47be6dd
+
+	measure 'Previous Month Sales Growth %' =
+			
+			VAR CurrentSales = [Total Sales]
+			VAR PreviousSales = [Previous Month Sales]
+			
+			RETURN
+			IF(
+			    ISBLANK(PreviousSales),
+			    BLANK(),
+			    DIVIDE(
+			        CurrentSales - PreviousSales,
+			        PreviousSales
+			    )
+			)
+		lineageTag: e557f60a-d9f3-4c01-9ff1-977a7956e904
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Month Sales Growth Display' =
+			
+			VAR Growth = [Previous Month Sales Growth %]
+			
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Growth > 0, "▲",
+			        Growth < 0, "▼",
+			        "▬"
+			    )
+			
+			RETURN
+			IF(
+			    ISBLANK(Growth),
+			    "N/A",
+			    Arrow & " " & FORMAT(Growth, "0.00%")
+			)
+		lineageTag: 5bff99b8-6b73-45dc-a4cf-98052df453aa
+
+	measure 'Previous Month Sales Growth Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Previous Month Sales Growth %] > 0, "#2E7D32",
+			    [Previous Month Sales Growth %] < 0, "#E74C3C",
+			    "#808080"
+			)
+		lineageTag: 52432828-9870-4a16-8464-2ede314fd42b
+
+	measure 'Previous Month Avg Sales per Customer' =
+			
+			CALCULATE(
+			    [Average Sales per Customer],
+			    DATEADD(
+			        'Calendar'[Date],
+			        -1,
+			        MONTH
+			    )
+			)
+		lineageTag: 916688f5-b308-4063-9ea3-1c423fcd63e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Sales per Customer Growth %' =
+			
+			VAR CurrentValue = [Average Sales per Customer]
+			VAR PreviousValue = [Previous Month Avg Sales per Customer]
+			
+			RETURN
+			IF(
+			    ISBLANK(PreviousValue),
+			    BLANK(),
+			    DIVIDE(
+			        CurrentValue - PreviousValue,
+			        PreviousValue
+			    )
+			)
+		lineageTag: 35ac27e6-d05a-436f-81b9-11793eb1721a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Sales per Customer Growth Display' =
+			
+			VAR Growth = [Avg Sales per Customer Growth %]
+			
+			VAR Arrow =
+			    SWITCH(
+			        TRUE(),
+			        Growth > 0, "▲",
+			        Growth < 0, "▼",
+			        "▬"
+			    )
+			
+			RETURN
+			IF(
+			    ISBLANK(Growth),
+			    "N/A",
+			    Arrow & " " & FORMAT(Growth, "0.0%")
+			)
+		lineageTag: b83f99ff-6faa-42a4-bc0f-fd799dcbce85
+
+	measure 'Avg Sales per Customer Growth Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Avg Sales per Customer Growth %] > 0, "#2ECC71",
+			    [Avg Sales per Customer Growth %] < 0, "#E74C3C",
+			    "#808080"
+			)
+		lineageTag: cf12e0af-600f-46fb-b550-08f091607485
+
+	measure 'Total Products' =
+			
+			SUM(Sales[Quantity])
+		formatString: 0
+		lineageTag: 217a9626-274f-458d-88d2-87027eb74f80
+
+	measure 'Total Products MoM %' =
+			
+			VAR CurrentValue = [Total Products]
+			VAR PreviousValue =
+			    CALCULATE(
+			        [Total Products],
+			        DATEADD('Calendar'[Date], -1, MONTH)
+			    )
+			RETURN
+			    DIVIDE(CurrentValue - PreviousValue, PreviousValue, 0)
+		lineageTag: 4107be8d-c771-4620-ad2d-d46769eb796f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Product Price' =
+			
+			AVERAGE(Products[product_retail_price])
+		lineageTag: c2e384ed-b85b-4c76-9a70-ecc6875064ce
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Product Price MoM %' =
+			
+			VAR CurrentValue = [Average Product Price]
+			VAR PreviousValue =
+			    CALCULATE(
+			        [Average Product Price],
+			        DATEADD('Calendar'[Date], -1, MONTH)
+			    )
+			RETURN
+			    DIVIDE(CurrentValue - PreviousValue, PreviousValue, 0)
+		lineageTag: f469c242-2c9b-477d-ae83-bc7fab4d6cd7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Cost MoM %' =
+			
+			VAR CurrentValue = [Total Cost]
+			VAR PreviousValue =
+			    CALCULATE(
+			        [Total Cost],
+			        DATEADD('Calendar'[Date], -1, MONTH)
+			    )
+			RETURN
+			    DIVIDE(CurrentValue - PreviousValue, PreviousValue, 0)
+		lineageTag: f2d28fe6-86b2-4f7e-86f7-eb1925d86335
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Products MoM Display' =
+			
+			VAR Change = [Total Products MoM %]
+			VAR Arrow =
+			    IF(Change > 0, "▲", IF(Change < 0, "▼", "—"))
+			RETURN
+			    Arrow & " " & FORMAT(ABS(Change), "0.00%")
+		lineageTag: 6221a400-0bbd-49a2-b325-96e53c1046e9
+
+	measure 'Avg Product Price MoM Display' =
+			
+			VAR Change = [Avg Product Price MoM %]
+			VAR Arrow =
+			    IF(Change > 0, "▲", IF(Change < 0, "▼", "—"))
+			RETURN
+			    Arrow & " " & FORMAT(ABS(Change), "0.0%")
+		lineageTag: 21db7c22-436d-408e-b7f8-d99291b6c2a0
+
+	measure 'Total Cost MoM Display' =
+			
+			VAR Change = [Total Cost MoM %]
+			VAR Arrow =
+			    IF(Change > 0, "▲", IF(Change < 0, "▼", "—"))
+			RETURN
+			    Arrow & " " & FORMAT(ABS(Change), "0.00%")
+		lineageTag: a345d0af-564e-4076-a976-a2cab557ce00
+
+	measure 'Total Products MoM Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Total Products MoM %] > 0, "#2E7D32",
+			    [Total Products MoM %] < 0, "#DC2626",
+			    "#6B7280"
+			)
+		lineageTag: 1ac649f2-0468-40da-b376-e0f5b73b4928
+
+	measure 'Avg Product Price MoM Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Avg Product Price MoM %] > 0, "#2E7D32",
+			    [Avg Product Price MoM %] < 0, "#DC2626",
+			    "#6B7280"
+			)
+		lineageTag: d8f23d22-18f5-49e7-a34b-751ca1dc2d56
+
+	measure 'Total Cost MoM Color' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Total Cost MoM %] > 0, "#2E7D32",
+			    [Total Cost MoM %] < 0, "#DC2626",
+			    "#6B7280"
+			)
+		lineageTag: 6a23de40-6e16-4aeb-8f72-2bf2609ce4f2
+
+	measure 'Total Return Quantity' =
+			
+			SUM('Returns'[Quantity])
+		formatString: 0
+		lineageTag: 4a1aa9ef-e836-4f80-a333-5b507325c27d
+
+	measure Measure
+		lineageTag: 12c9b288-91c7-4dd7-9092-7a32a852cf0c
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Returned Products' =
+			
+			DISTINCTCOUNT('Returns'[Product_id])
+		formatString: 0
+		lineageTag: d8ca9707-21a9-4035-b11f-1e4604f2a96e
+
+	measure 'Stores with Returns' =
+			
+			DISTINCTCOUNT('Returns'[Store_id])
+		formatString: 0
+		lineageTag: 5550a86a-6ad7-4a67-9ff7-923158b2d0dd
+
+	measure 'Return Quantity MoM %' =
+			
+			VAR CurrentValue =
+			    [Total Return Quantity]
+			VAR PreviousValue =
+			    CALCULATE(
+			        [Total Return Quantity],
+			        DATEADD('Calendar'[date], -1, MONTH)
+			    )
+			RETURN
+			    DIVIDE(
+			        CurrentValue - PreviousValue,
+			        PreviousValue,
+			        0
+			    )
+		lineageTag: 94f98ae8-931e-4735-869b-24912a625a66
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Quantity MoM Display' =
+			
+			VAR Change = [Return Quantity MoM %]
+			RETURN
+			    IF(
+			        Change > 0,
+			        "▲ " & FORMAT(Change, "0.0%"),
+			        IF(
+			            Change < 0,
+			            "▼ " & FORMAT(ABS(Change), "0.0%"),
+			            "— 0.0%"
+			        )
+			    )
+		lineageTag: 615dcde7-b6e4-45e3-bff6-c4dc7d0f8ba0
+
+	measure 'Returned Products MoM %' =
+			
+			VAR CurrentValue =
+			    [Returned Products]
+			VAR PreviousValue =
+			    CALCULATE(
+			        [Returned Products],
+			        DATEADD('Calendar'[date], -1, MONTH)
+			    )
+			RETURN
+			    DIVIDE(
+			        CurrentValue - PreviousValue,
+			        PreviousValue,
+			        0
+			    )
+		lineageTag: 66a27809-a840-4086-8de8-2160d27cc6e4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Returned Products MoM Display' =
+			
+			VAR Change = [Returned Products MoM %]
+			RETURN
+			    IF(
+			        Change > 0,
+			        "▲ " & FORMAT(Change, "0.0%"),
+			        IF(
+			            Change < 0,
+			            "▼ " & FORMAT(ABS(Change), "0.0%"),
+			            "— 0.0%"
+			        )
+			    )
+		lineageTag: f079f409-204e-4fa6-a4bb-ce90fbf65053
+
+	measure 'Stores with Returns MoM %' =
+			
+			VAR CurrentValue =
+			    [Stores with Returns]
+			VAR PreviousValue =
+			    CALCULATE(
+			        [Stores with Returns],
+			        DATEADD('Calendar'[date], -1, MONTH)
+			    )
+			RETURN
+			    DIVIDE(
+			        CurrentValue - PreviousValue,
+			        PreviousValue,
+			        0
+			    )
+		lineageTag: f2babdd2-3b04-49d1-b8f4-a823a430b071
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Stores with Returns MoM Display' =
+			
+			VAR Change = [Stores with Returns MoM %]
+			RETURN
+			    IF(
+			        Change > 0,
+			        "▲ " & FORMAT(Change, "0.00%"),
+			        IF(
+			            Change < 0,
+			            "▼ " & FORMAT(ABS(Change), "0.00%"),
+			            "— 0.00%"
+			        )
+			    )
+		lineageTag: 04e26a10-33c8-4a54-891a-e902e60897d6
+
+	measure 'Return Quantity MoM Color' =
+			
+			IF(
+			    [Return Quantity MoM %] > 0,
+			    "#D64545",
+			    IF(
+			        [Return Quantity MoM %] < 0,
+			        "#2E8B57",
+			        "#808080"
+			    )
+			)
+		lineageTag: 8319f120-a2ea-40f1-b511-e3743e0fe2ea
+
+	measure 'Returned Products MoM Color' =
+			
+			IF(
+			    [Returned Products MoM %] > 0,
+			    "#D64545",
+			    IF(
+			        [Returned Products MoM %] < 0,
+			        "#2E8B57",
+			        "#808080"
+			    )
+			)
+		lineageTag: f171e614-5d3d-4f00-8cc8-dc8e17803d6a
+
+	measure 'Stores with Returns MoM Color' =
+			
+			IF(
+			    [Stores with Returns MoM %] > 0,
+			    "#D64545",
+			    IF(
+			        [Stores with Returns MoM %] < 0,
+			        "#2E8B57",
+			        "#808080"
+			    )
+			)
+		lineageTag: b99079e0-00aa-4b6a-be2e-877ae8f6b988
+
+	column Column
+		formatString: 0
+		lineageTag: b3c0e4b2-56a0-4c3c-b645-605db1557673
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measure = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = af219e5943604ed5abb2bfc658c080c9
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

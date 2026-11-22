@@ -1,0 +1,45 @@
+table Region
+	lineageTag: 1cde67b1-c637-4ab1-96ac-c9d364933301
+
+	column region_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a4af7f7d-28b7-4c4f-ba05-14fd149c8630
+		summarizeBy: none
+		sourceColumn: region_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_district
+		dataType: string
+		lineageTag: 8fa3eaa4-71f9-4c0a-8527-7fee1e110bd4
+		summarizeBy: none
+		sourceColumn: sales_district
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_region
+		dataType: string
+		lineageTag: 26a7dc7f-0a32-4b98-b7b3-237ce90ff925
+		summarizeBy: none
+		sourceColumn: sales_region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Region = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data"),
+				    #"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Region csv" = Source{[#"Folder Path"="C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\",Name="Region.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\ahmed\OneDrive\Documents\my-data-analysis-project\Hyper-Market-Project\Hyper Market Data\Hyper-market-data\Hyper-date\_Region csv",[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"region_id", Int64.Type}, {"sales_district", type text}, {"sales_region", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each true)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

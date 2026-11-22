@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6f051b4202c06efdabbc",
+  "position": {
+    "x": 1247.2727272727273,
+    "y": 151.81818181818181,
+    "z": 50000,
+    "height": 59.999999999999993,
+    "width": 192.72727272727272,
+    "tabOrder": 46000
+  },
+  "visualGroup": {
+    "displayName": "Calendar Filter off",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

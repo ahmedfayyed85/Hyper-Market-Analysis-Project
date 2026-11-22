@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Calendar","Stores","Returns","Products","Customers","Region","SALES","Sales 2017","Sales 2018"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Stores
+ref table DateTableTemplate_8d35ce77-b759-4ac8-9c86-c3f23962740c
+ref table Returns
+ref table Products
+ref table Customers
+ref table Region
+ref table SALES
+ref table LocalDateTable_c279f6c4-67dd-4b29-bbf7-606ce2b3fe13
+ref table Calendar
+ref table LocalDateTable_b6510469-d716-4cd0-a33a-d214bd9a0943
+ref table _Measure
+
+ref cultureInfo en-US
+
